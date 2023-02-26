@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- meata tag -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Fully functional manifest generator for minecraft BE!" />
+
+    <!-- Content share link -->
+    <meta property="og:title" content="JSON Deobfuscate">
+    <meta property="og:locale" content="en-US">
+    <meta property="og:description" content="Deobfuscate the json that you messed up before">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Choigame123/json-deobfuscate/main/thumbnail.png">
+    <meta property="twitter:card" content="summary_large_image">
+
+    <!-- aliable link -->
+    <link rel="icon" type="image/png" href="./favico.png">
+    <link rel="apple-touch-icon" type="image/png" href="./favico.png">
+    <link rel="alternate" title="JSON deobfuscate" href="" hreflang="en">
+
+    <!-- styles -->
+    <link rel="stylesheet" href="./choigame.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css">
+
+    <!-- scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+    <script src="./choigame.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/addon/fold/foldcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/addon/fold/foldgutter.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/addon/fold/foldgutter.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/javascript/javascript.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/theme/tomorrow-night-bright.min.css">
+    <link rel="stylesheet" href="./navigation.css">
+    <style>
+        .CodeMirror {
+            width: 100%;
+            border: 2px solid #505050;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .CodeMirror::-webkit-scrollbar {
+            display: none;
+        }
+        .CodeMirror-scroll {
+            overflow: hidden;
+        }
+        .dev_button {
+            padding-left: 20px;
+        }
+        .tt h2 {
+            text-align: center;
+            margin: auto 8px;
+            color: #CA502A;
+            text-decoration: underline;
+        }
+        .tt h5 {
+            text-align: right;
+            color: darkgreen;
+            margin: 0px 0px;
+        }
+        .tt {
+           color: #DBB531
+        }
+        body h1 {
+            margin-bottom: 5px;
+        }
+    </style>
+    <title>JSON Obfuscate</title>
+    <script>
+        let state = false,
+        cancel_next_time = false,
+        editor,
+        _ = function(cs) {
+            return document.getElementById(cs);
+        };
+        $(() => {
+            $(".nav-section").hide();
+            $(".nav-bar img").click(() => {
+                if (!state) $(".nav-section").show(),
+                (state = true);
+                else $(".nav-section").hide(),
+                (state = false);
+            });
+            $("#o-div").hide();
+            editor = CodeMirror.fromTextArea(_("input"), {
+                lineNumbers: true,
+                scrollbarStyle: "null",
+                mode: "javascript",
+                theme: "tomorrow-night-bright",
+                gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+                foldGutter: true,
+                matchBrackets: true,
+                extraKeys: {
+                    "Ctrl-Q": function(cm) {
+                        cm.foldCode(cm.getCursor());
+                    }
+                }
+            });
+        });
+        function upload() {
+            if (!cancel_next_time) {
+                cancel_next_time = true;
+                _("c_f").value = null;
+                _("c_f").click;
+            }
+            setTimeout(() => {
+                cancel_next_time = false;
+            }, 500);
+        }
+        /*bar.com/embed/863*/
+    </script>
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="header" style="text-align:center">
+            <img style="vertical-align:middle" src="./app-theme/n-icon.png">
+            <text style="vertical-align:middle">JSON Tools > Json Deobfuscate</text>
+        </div>
+        <br><br>
+        <div class="nav-section">
+            <div class="header-box">
+                <text style=""> Other Tools </text>
+            </div>
+            <div class="nb-box">
+                <details>
+                    <summary>Minecraft Tools</summary>
+                    <ol>
+                        <li onclick="window.open(&#34;https://choigame123.github.io/minecraft-manifest/&#34;)"><u>Manifest Generator</u></li>
+                    </ol>
+                </details>
+            </div>
+            <div class="box">
+                <details>
+                    <summary>Json Tools</summary>
+                    <ol>
+                        <li onclick="window.open(&#34;https://choigame123.github.io/json-obfuscate/&#34;)"><u>Json Obfuscate</u></li>
+                        <li onclick="$(&#34;.nav-section&#34;).hide(), (state=false)"><u>Json Deobfuscate</u></li>
+                        <li onclick="window.open(&#34;&#34;)"><u>Json Minify</u></li>
+                        <li onclick="window.open(&#34;&#34;)"><u>Json Beautify</u></li>
+                    </ol>
+                </details>
+            </div>
+        </div>
+    </div>
+    <h1>JSON Deobfuscate</h1><br><br>
+    <label class="dev_button" onclick="devMode()">
+        Made by: Choigame(Vũ Quang Hào)
+    </label>
+    <br>
+    <label class="dev_button">
+        Source code: <u onClick="window.open(&#34;https://github.com/Choigame123/json-deobfuscate&#34;)">Click Here</u>
+    </label>
+    <br>
+    <br>
+    <form id="generator" class="generator">
+        <label>
+            Enter you json or
+        <u onClick="upload()">
+            select a file
+            <input id="c_f" type="file" style="display:none" onchange="file_upload(this)" accept="application/json" name="input">
+        </u></label>
+        <br>
+        <br>
+        <textarea type="text" id="input" style="width:100%;"autofocus wrap="hard" rows="8">
+//Here is example of json deobfuscate, press `Submit` for test!
+{"\u0066\u006f\u006f":[/*cdBVrLDE9pZJu7g9TLoHbL5HNm8HeWyyh2J*/1,/*vikMobYpwq34DBioB1hYvRMAh44U8SQLuqR*/2,/*oH1SJsyjpGjtuc0jIURHuR1jABdMBtc9BDu*/3,/*1q87Jaj7eTvU398YoZlAdaAlpCrnnfrJngN*/4,/*VIgnw2FC9uraUsztdMeFwC38PbubfJdELbo*/5,/*MOpJW8Hq9XUC2HwEnvfbcGYKBFIlANdEOzl*/6,/*mWWD1uau6ekhrrA2FcWJ1S81Tln7OtW0nxJ*/7,/*jnhTSY81q7C0qTJh3hujiClUyOHsP5gnMqU*/8,/*FaHt1GZQq8qOtJmjuAeBtg46DwLfMrVNytV*/9,/*rNImKvI5hCV1EgCMkuXjm08PWT3nMRwCyfu*/0],"\u0062\u0061\u0072":{"\u006e\u0061\u006d\u0065":/*QvFhD7DF3Ta2OoxUfWOAs192j6vU548hUiY*/"\u004a\u0053\u004f\u004e\u0020\u006f\u0062\u0066\u0075\u0073\u0063\u0061\u0074\u0065","\u0061\u0075\u0074\u0068\u006f\u0072":/*PETPqCC01W2zH8xCFtGLr73E3Xa1wfstmqZ*/"\u0063\u0068\u006f\u0069\u0067\u0061\u006d\u0065\u0031\u0032\u0033"},"\u0062\u006f\u006f\u006c":/*N6U8qTZCTz3DB80NYaKI5oKIwuawMCqhuYJ*/null,"\u006e\u0075\u006d\u0062\u0065\u0072":[/*xcP2zc82fTbqKO4WUwcxEuPOeI6Jd8cVxyD*/38000,/*C9kZctEMsllhHwDJIyMdzDDDvlRdfFmEHiL*/-3000]}{}
+
+</textarea>
+<div class="box6" id="o-div" style="border-radius:0px;border-top:none;">
+<p>Code format <input type="checkbox" id="format" onchange="updateFormat()" checked/></p>
+<div id="si">
+<label for="indent" id="ilabel">Tab spaces </label>
+<input type="number" id="indent" style="width:10%;size:10px;" maxlength="1" id="space" placeholder="0" value="4" onchange="updateFormat()"/>
+</div>
+<button type="button" class="button_block" onclick="coppyToClipboard()" class="button_block1">Coppy to clipboard</button>
+<button type="button" class="button_block" onclick="download()" class="button_block1">Download file</button>
+<button type="button" class="button_block" id="st-btn" onclick="clear()">Clear</button>
+</div>
+    </div>
+    <div id="out-label"> </div>
+    <br>
+    <br>
+    <div class="s-btn"><button class="button_block" type="button" onclick="onSubmit()">Submit</button></div>
+</form>
+
+           <!-- Uhhhhhhh nothing to see -->
+
+<div class="tt" style="padding: 20px 10px">
+<h2>Json deobfuscate tool</h2>
+<span>
+    - This thing is used to reverse the obfuscate previous!
+</span>
+<br>
+<br>
+<h2>How to use this tool</h2>
+<span>
+    - How to use it is extremely simple, just paste your code in (or upload a file), press `Submit` and get the results right away. You can copy to clipboard or download it.
+</span>
+<br>
+<br>
+<h2>Important Note</h2>
+<span>
+    - Everything here is a preview, there may be bugs. If you find a bug, you can create an issue on the project's official github page.
+</span>
+<br>
+<span>
+    - Encode function available <u onClick="window.open(&#34;https://github.com/Choigame123/json-deobfuscate/blob/main/choigame.js&#34;)">right here</u>
+</span>
+<br>
+<span>
+    - Thank for visited
+<br>
+<br>
+<h5>
+    (Web của con gà 🐿️)
+</h5>
+</span>
+</div>
+</body>
+</html>
